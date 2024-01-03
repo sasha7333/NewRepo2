@@ -1,0 +1,31 @@
+﻿@model ListViewModel<Dish>
+@{
+    ViewData["Title"] = "Меню";
+    var categories = ViewData["Groups"] as IEnumerable<DishGroup>;
+    int currentGroup = (int)ViewData["CurrentGroup"];
+
+    var text = currentGroup != 0
+    ? categories
+    .FirstOrDefault(g => g.DishGroupId == currentGroup)?
+    .GroupName
+    : "Все";
+}
+
+    <div clas="row">
+    <div class="col-2  mt-5">
+
+        </div>
+        <div class="col-10 mt-5">
+            <div class="card-group" id="list">
+                <partial name="_ListPartial" model="@Model" />
+            </div>
+            <div class="mt-2">
+                <pager page-current="@Model.CurrentPage"
+                       page-total="@Model.TotalPages"
+                       action="Index"
+                       controller="Product"
+                       group-id="@currentGroup"></pager>
+            </div>
+        </div>
+
+    </div>

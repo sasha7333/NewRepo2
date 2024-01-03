@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Labs</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Labs.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light box-shadow">
+            <div class="container">
+                <!-- меню сайта -->
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">Labs</a>
+                @await Component.InvokeAsync("Menu")
+                <!-- меню сайта - конец -->
+                <!-- Информация пользователя -->
+                <partial name="_UserPartial" />
+                <!-- Информация пользователя - конец -->
+            </div>
+        </nav> <!-- Панель навигации - конец -->
+    </header><!-- header - конец -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="fixed-bottom">
+        <div class="navbar navbar-light navbar-expand-md bg-light box-shadow">
+            <div class="container">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="http://www.facebook.com">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="http://www.vk.com">
+                        <i class="fab fa-vk fa-2x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="http://www.twitter.com">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
